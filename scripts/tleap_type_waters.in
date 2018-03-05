@@ -1,0 +1,4 @@
+source leaprc.water.tip3p
+mol = loadpdb /Users/kamranhaider/Dropbox/ProtonHopping/data/gramicidin/water_placement/09_init_o_placement.pdb
+savepdb mol /Users/kamranhaider/Dropbox/ProtonHopping/data/gramicidin/water_placement/09_init_wat_placement.pdb
+quit
