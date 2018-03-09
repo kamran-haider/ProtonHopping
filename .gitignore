@@ -1,6 +1,9 @@
 # Othe project related stuff
 *.dat
-
+.DS_Store
+.idea
+**/.DS_Store
+**/.idea
 data/gramicidin/simulations/
 scripts/pdbs
 ~*

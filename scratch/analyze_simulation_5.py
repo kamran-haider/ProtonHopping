@@ -24,38 +24,11 @@ font = {'family' : 'sans-serif',
 plt.rc('font', **font)
 
 
-def calc_amide_dipole(step2out):
-    v = np.array([0, 0, 1])
-    with open(step2out, "r") as f1:
-        lines = f1.readlines()
-        prot_lines = [l[31:76].split() for l in lines if "EM_" not in l and "HOH" not in l]
-        n_prot_atoms = len(prot_lines)
-        prot_coords = np.zeros((n_prot_atoms, 3))
-        prot_charges = np.zeros((n_prot_atoms, 1))
-
-        amide_lines = [l[31:76].split() for l in lines if l[13:15] == "N " or l[13:15] == "H " and "HOH" not in l]
-        n_amide_atoms = len(amide_lines)
-        amide_coords = np.zeros((n_amide_atoms, 3))
-        amide_charges = np.zeros((n_amide_atoms, 1))
-
-        for index, l in enumerate(amide_lines):
-            x, y, z = float(l[0]), float(l[1]), float(l[2])
-            c = float(l[4])
-            amide_coords[index:] += [x, y, z]
-            amide_charges[index:] = c
-        pos = -1.0 * amide_coords.T
-        chg = amide_charges[:, 0]
-        dp = pos.dot(chg)
-        # proj = np.multiply(dp.dot(v) / v.dot(v), v)
-        scaling_factor = dp.dot(v) / v.dot(v)
-        return scaling_factor
-
-
 def main():
     water_charges = {"t3p" : [-0.834, 0.417, 0.417], "pm6" : [-2.000, 1.000, 1.000]}
     prefix = sys.argv[1]
     curr_dir = os.getcwd()
-    n_conf = 5
+    n_conf = 1
     n_runs = 10
     charge_sets = ["t3p", "pm6"]
     chg = sys.argv[1]
@@ -63,24 +36,35 @@ def main():
         sys.exit("Charge set %s not allowed!" % chg)
     charges = water_charges[chg]
     # input files
-    data_dir = os.path.abspath("../data/gramicidin/simulations/input_struct_%s" % chg)
-    mu = []
-    amide_mu = []
-    for n in range(n_runs):
+    data_dir = os.path.abspath("../data/gramicidin/simulations/vdw_scaling_new")
+    scalings = [1.0, 0.95, 0.90, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 0.55, 0.5, 0.45, 0.4, 0.35, 0.3, 0.25, 0.2, 0.15, 0.1, 0.05, 0.00]
+    n_bounds = []
+    step2out = os.path.join(data_dir, "step2_out.pdb")
+
+    for index, n in enumerate(scalings):
         mu_z = []
-        prefix = "run_%02d" % n
-        print("Processing %s:" % prefix)
-        msdat = os.path.join(data_dir, prefix, "ms.dat")
-        head3lst = os.path.join(data_dir, prefix, "head3.lst")
-        fort38 = os.path.join(data_dir, prefix, "fort.38")
-        energies_opp = os.path.join(data_dir, prefix, "energies.opp")
-        step2out = os.path.join(data_dir, prefix, "step2_out.pdb")
+        prefix = sys.argv[1] + "_%02d" % index
+        print(prefix)
+        msdat = os.path.join(data_dir, prefix + "_ms.dat")
+        head3lst = os.path.join(data_dir, prefix + "_head3.lst")
+        fort38 = os.path.join(data_dir, prefix + "_fort.38")
+        energies_opp = os.path.join(data_dir, prefix + "_energies.opp")
+        #step2out = os.path.join(data_dir, prefix + "_step2_out.pdb")
+
 
         msa = Simulation(msdat, head3lst, fort38)
-        msa.parse_trajectory(sample_frequency=10)
+        msa.parse_trajectory(sample_frequency=1)
         msa.parse_struct(step2out, n_conf)
         msa.calculate_water_dipoles(charges)
-        test = calc_amide_dipole(step2out)
+        n_bound = 0.0
+        # calc n_bound occ
+        for c in msa.conformer_data.keys():
+            if "HOH" in c and "DM" not in c:
+                occ = msa.conformer_data[c][1]
+                if occ > 0.0:
+                    n_bound += occ
+        n_bounds.append(n_bound)
+        print(n_bound)
         for i in range(msa.trajectory.shape[0]):
 
             microstate_conf_ids = msa.trajectory[i, :]
@@ -101,33 +85,28 @@ def main():
                 #print("Microstate %d: Energy =  %g, Dipole = %g" % (i, msa.energies[i], t_dp))
 
         mu_z = np.array([sum(m) for m in mu_z])
-        mu.append(np.mean(mu_z))
-        amide_mu.append(test)
         figure = pylab.figure(figsize=(7.5, 3.5), dpi=300)
-        y, bin_edges = np.histogram(mu_z, bins=50)
+        y, bin_edges = np.histogram(mu_z, bins=100)
         kernel = stats.gaussian_kde(mu_z)
         bin_centers = 0.5 * (bin_edges[1:] + bin_edges[:-1])
         plt.hist(mu_z, bins=50, normed=1, histtype='stepfilled')
         p_y = kernel.evaluate(bin_centers)
         plt.plot(bin_centers, p_y, 'k-')
-        plt.xlim(-6.0, 6.0)
-        plt.ylim(0.0, np.max(p_y) + 0.2)
-        #plt.ylim(0.0, 1.2)
-        style = dict(size=10, color='gray')
-        plt.text(-5.8, 0.1, "%.2f" % test, **style)
         plt.xlabel(r'$\mu_{z,total}$', size=14)
         plt.ylabel(r'$P(\mu_{z,total})$', size=14)
         plt.tight_layout()
-        plt.savefig("sim_04_%s_histogram_total_dipole.png" % prefix)
-            
+        plt.xlim(-4.0, 4.0)
+        #plt.ylim(0.0, np.max(p_x) + 0.1)
+        plt.ylim(0.0, 1.2)
+
+        plt.savefig("sim_05_%s_histogram_total_dipole.png" % prefix)
 
     os.chdir(curr_dir)
-    figure = pylab.figure(figsize=(4.5, 4.5), dpi=300)
-    plt.scatter(mu, amide_mu)
-    plt.xlabel(r'$\mu_{z,water}$', size=14)
-    plt.ylabel(r'$\mu_{z,amide}$', size=14)
-    plt.tight_layout()
-    plt.savefig("%s_wat_amide_dipole.png" % chg)
 
+    figure = pylab.figure(figsize=(7.5, 3.5), dpi=300)
+    plt.xlabel("Scaling Factor")
+    plt.ylabel("Waters bound");
+    plt.plot(scalings, n_bounds, '-ok')
+    plt.savefig("sim_05_%s_wat_vs_scaling.png" % chg, dpi=300)
 if __name__ == "__main__":
     status = sys.exit(main())

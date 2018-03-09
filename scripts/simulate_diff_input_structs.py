@@ -49,7 +49,7 @@ def main():
     # fix number of conformers per water to 1
     n_conf = 5
     # set number of separate MC runs
-    n_runs = 1
+    n_runs = 10
     # obtain water charge set option from the command-line
     prefix = sys.argv[1]
     charge_set = charge_sets[prefix]
@@ -65,7 +65,7 @@ def main():
     src_newtpl = os.path.join(input_dir, "new.tpl")
 
     # run n different MC simulations, each on a different protein conf and coresponding water orientations
-    for n in range(n_runs):
+    for n in range(1, n_runs):
         run_dir = os.path.join(home_dir, "run_%02d" % n)
         print("Run number %d, dir %s" % (n, run_dir))
 
@@ -96,17 +96,7 @@ def main():
         last_prot_at = get_last_prot_at_index(write_step2out)
         assemble_step2_out(water_conformers, write_step2out, "step2_out.pdb", last_prot_at)
         write_msgold("step2_out.pdb", "W", "HOH")
-        """
-        with open("head3.lst", "r") as f1, open("temp_head3.lst", "w") as f2:
-            lines = f1.readlines()
-            for l in lines:
-                if "CTR-" in l:
-                    new_line = l[:21] + "t" + l[22: ]
-                    f2.write(new_line)
-                else:
-                    f2.write(l)
-        copy2("temp_head3.lst", "head3.lst")
-        """
+
 
         # set up MCCE run
         m = MCCEParams(mcce_exec_dir)

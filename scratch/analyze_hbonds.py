@@ -1,5 +1,5 @@
 """
-Script to run MCCE simulation at different charges for water molecules.
+Script to do hydrogen bond analysis on Gramicidin MCCE simulations.
 """
 import os
 import sys
