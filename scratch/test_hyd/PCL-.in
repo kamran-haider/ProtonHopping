@@ -1,0 +1,12 @@
+# beg
+/usr/AMBER/dat/db4.dat
+PCL      0../preps/PCL.bin
+
+DU
+    0    0    0    0
+# Molecule 1
+O   0    0    1    3    0
+PCL 2
+
+QUIT
+

@@ -1,0 +1,15 @@
+# outs
+ATOM      1 Cl   PCL    11      -7.411  -2.706   2.361  0.580
+ATOM      2 O1   PCL    11      -6.248  -3.135   1.647 -0.395
+ATOM      3 O3   PCL    11      -7.165  -2.652   3.773 -0.395
+ATOM      4 O2   PCL    11      -7.861  -1.422   1.910 -0.395
+ATOM      5 O4   PCL    11      -8.438  -3.698   2.117 -0.395
+END
+#liaisons :
+CONNECT    1 CP   2 3 4 5 
+CONNECT    2 OP   1 
+CONNECT    3 OP   1 
+CONNECT    4 OP   1 
+CONNECT    5 OP   1 
+END
+#Nombre total de liaisons : 4

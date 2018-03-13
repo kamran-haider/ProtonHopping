@@ -1,0 +1,91 @@
+# EuLa
+ATOM      1 O    AMD     8      -1.653   1.101  -1.317 -0.588
+ATOM      2 C1   AMD     8      -2.846   0.891  -1.615  0.478
+ATOM      3 N    AMD     8      -3.521   1.692  -2.550 -0.441
+ATOM      4 C4   AMD     8      -4.984   1.716  -2.781  0.336
+ATOM      5 C5   AMD     8      -5.396   1.084  -4.032 -0.210
+ATOM      6 H51  AMD     8      -6.418   0.709  -3.970  0.055
+ATOM      7 H52  AMD     8      -4.824   0.167  -4.178  0.055
+ATOM      8 H53  AMD     8      -5.407   1.782  -4.869  0.055
+ATOM      9 H41  AMD     8      -5.296   2.752  -2.910 -0.017
+ATOM     10 H42  AMD     8      -5.618   1.426  -1.943 -0.017
+ATOM     11 C2   AMD     8      -2.837   2.891  -3.222  0.336
+ATOM     12 C3   AMD     8      -2.372   2.436  -4.630 -0.210
+ATOM     13 H31  AMD     8      -2.043   1.397  -4.598  0.055
+ATOM     14 H32  AMD     8      -1.561   2.999  -5.091  0.055
+ATOM     15 H33  AMD     8      -3.177   2.421  -5.366  0.055
+ATOM     16 H21  AMD     8      -2.031   3.293  -2.608 -0.017
+ATOM     17 H22  AMD     8      -3.589   3.674  -3.325 -0.017
+ATOM     18 C5   PYR     9      -4.326  -2.530   0.676 -0.448
+ATOM     19 C4   PYR     9      -5.162  -1.994  -0.263  0.218
+ATOM     20 C3   PYR     9      -4.769  -0.884  -1.039 -0.448
+ATOM     21 C2   PYR     9      -3.487  -0.222  -0.866  0.471
+ATOM     22 N    PYR     9      -2.661  -0.843   0.135 -0.679
+ATOM     23 C1   PYR     9      -3.059  -1.945   0.991  0.471
+ATOM     24 H3   PYR     9      -5.493  -0.506  -1.744  0.210
+ATOM     25 H4   PYR     9      -6.102  -2.501  -0.425  0.069
+ATOM     26 H5   PYR     9      -4.761  -3.348   1.231  0.210
+ATOM     27 O    AMD    10      -0.947  -1.725   1.863 -0.588
+ATOM     28 C1   AMD    10      -2.075  -2.295   1.986  0.478
+ATOM     29 N    AMD    10      -2.172  -3.114   3.016 -0.441
+ATOM     30 C4   AMD    10      -1.078  -4.052   3.281  0.336
+ATOM     31 C5   AMD    10       0.067  -3.490   4.163 -0.210
+ATOM     32 H51  AMD    10      -0.317  -2.952   5.030  0.055
+ATOM     33 H52  AMD    10       0.739  -4.294   4.465  0.055
+ATOM     34 H53  AMD    10       0.633  -2.735   3.618  0.055
+ATOM     35 H41  AMD    10      -0.631  -4.385   2.344 -0.017
+ATOM     36 H42  AMD    10      -1.564  -4.852   3.838 -0.017
+ATOM     37 C2   AMD    10      -3.333  -3.039   3.911  0.336
+ATOM     38 C3   AMD    10      -3.278  -1.810   4.800 -0.210
+ATOM     39 H31  AMD    10      -2.426  -1.789   5.478  0.055
+ATOM     40 H32  AMD    10      -4.190  -1.665   5.379  0.055
+ATOM     41 H33  AMD    10      -3.237  -0.988   4.085  0.055
+ATOM     42 H21  AMD    10      -3.413  -3.921   4.547 -0.017
+ATOM     43 H22  AMD    10      -4.218  -2.899   3.290 -0.017
+END
+#liaisons :
+CONNECT    1 O    2 
+CONNECT    2 C    1 3 21 
+CONNECT    3 N    2 4 11 
+CONNECT    4 CT   3 5 9 10 
+CONNECT    5 CT   4 6 7 8 
+CONNECT    6 HC   5 
+CONNECT    7 HC   5 
+CONNECT    8 HC   5 
+CONNECT    9 HC   4 
+CONNECT   10 HC   4 
+CONNECT   11 CT   3 12 16 17 
+CONNECT   12 CT   11 13 14 15 
+CONNECT   13 HC   12 
+CONNECT   14 HC   12 
+CONNECT   15 HC   12 
+CONNECT   16 HC   11 
+CONNECT   17 HC   11 
+CONNECT   18 CA   19 23 26 0 20 19 22 
+CONNECT   19 CA   18 20 25 
+CONNECT   20 CA   19 21 24 0 22 21 18 
+CONNECT   21 CA   20 22 2 
+CONNECT   22 N    21 23 0 18 23 20 
+CONNECT   23 CA   18 22 28 
+CONNECT   24 HA   20 
+CONNECT   25 HA   19 
+CONNECT   26 HA   18 
+CONNECT   27 O    28 
+CONNECT   28 C    27 29 23 
+CONNECT   29 N    28 30 37 
+CONNECT   30 CT   29 31 35 36 
+CONNECT   31 CT   30 32 33 34 
+CONNECT   32 HC   31 
+CONNECT   33 HC   31 
+CONNECT   34 HC   31 
+CONNECT   35 HC   30 
+CONNECT   36 HC   30 
+CONNECT   37 CT   29 38 42 43 
+CONNECT   38 CT   37 39 40 41 
+CONNECT   39 HC   38 
+CONNECT   40 HC   38 
+CONNECT   41 HC   38 
+CONNECT   42 HC   37 
+CONNECT   43 HC   37 
+END
+#Nombre total de liaisons : 43

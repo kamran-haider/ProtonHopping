@@ -1,0 +1,7 @@
+# beg
+ATOM      1 Yb   M      61       0.156  -0.096   2.858  3.000
+END
+#liaisons :
+CONNECT    1 YB   
+END
+#Nombre total de liaisons : 0

@@ -1,0 +1,17 @@
+# TBP
+/usr/AMBER/dat/db4.dat
+PHO      0../preps/PHO.bin
+OBU      0../preps/OBU.bin
+
+DU
+    0    0    0    0
+# Molecule 1
+O   1    0    1    3    0
+PHO 2***  OBU 2***  OBU 2***  OBU 2
+
+    2    1O1  P1      0
+    3    1O1  P1      0
+    4    1O1  P1      0
+
+QUIT
+

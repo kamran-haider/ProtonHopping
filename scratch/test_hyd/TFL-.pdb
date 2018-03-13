@@ -1,0 +1,21 @@
+cd # tfl
+ATOM      1 S    TFL     1      -0.074   0.015  -0.874 -0.916
+ATOM      2 C    TFL     1       0.022  -0.017   0.941  0.495
+ATOM      3 F1   TFL     1       0.699  -1.153   1.345 -0.188
+ATOM      4 F2   TFL     1      -1.257  -0.027   1.469 -0.188
+ATOM      5 F3   TFL     1       0.697   1.106   1.385 -0.188
+ATOM      6 O1   TFL     1      -0.839  -1.255  -1.376 -0.616
+ATOM      7 O2   TFL     1      -0.839   1.303  -1.331 -0.616
+ATOM      8 O3   TFL     1       1.590   0.028  -1.558 -0.616
+END
+#liaisons :
+CONNECT    1 ST   7 6 8 2 
+CONNECT    2 CF   1 3 4 5 
+CONNECT    3 F    2 
+CONNECT    4 F    2 
+CONNECT    5 F    2 
+CONNECT    6 O    1 
+CONNECT    7 O    1 
+CONNECT    8 O    1 
+END
+#Nombre total de liaisons : 7

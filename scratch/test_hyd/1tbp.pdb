@@ -1,0 +1,90 @@
+ATOM      1 P1   PHO     1       9.843   5.519   1.766  1.770
+ATOM      2 O2   PHO     1       9.845   5.733   3.215 -0.870
+ATOM      3 O1   OBU     2      11.252   5.920   1.119 -0.560
+ATOM      4 C2   OBU     2      12.488   5.609   1.729  0.200
+ATOM      5 H6   OBU     2      12.596   4.539   1.904 -0.020
+ATOM      6 H7   OBU     2      13.243   5.882   0.992 -0.020
+ATOM      7 C3   OBU     2      12.786   6.392   3.019  0.060
+ATOM      8 H8   OBU     2      12.219   5.974   3.851  0.000
+ATOM      9 H9   OBU     2      13.842   6.259   3.256  0.000
+ATOM     10 C4   OBU     2      12.492   7.898   2.919  0.020
+ATOM     11 H10  OBU     2      11.424   8.062   2.764  0.000
+ATOM     12 H11  OBU     2      12.766   8.365   3.864  0.000
+ATOM     13 C5   OBU     2      13.279   8.581   1.794  0.020
+ATOM     14 H12  OBU     2      14.344   8.379   1.904  0.000
+ATOM     15 H13  OBU     2      12.941   8.222   0.821  0.000
+ATOM     16 H14  OBU     2      13.124   9.658   1.842  0.000
+ATOM     17 O1   OBU     3       9.568   3.976   1.413 -0.560
+ATOM     18 C2   OBU     3      10.082   2.965   2.249  0.200
+ATOM     19 H6   OBU     3       9.726   3.091   3.270 -0.020
+ATOM     20 H7   OBU     3      11.172   2.998   2.235 -0.020
+ATOM     21 C3   OBU     3       9.612   1.596   1.746  0.060
+ATOM     22 H8   OBU     3       8.542   1.504   1.932  0.000
+ATOM     23 H9   OBU     3       9.786   1.506   0.674  0.000
+ATOM     24 C4   OBU     3      10.325   0.450   2.476  0.020
+ATOM     25 H10  OBU     3      10.329   0.641   3.548  0.000
+ATOM     26 H11  OBU     3       9.764  -0.469   2.306  0.000
+ATOM     27 C5   OBU     3      11.762   0.243   1.976  0.020
+ATOM     28 H12  OBU     3      11.755   0.009   0.911  0.000
+ATOM     29 H13  OBU     3      12.218  -0.585   2.517  0.000
+ATOM     30 H14  OBU     3      12.368   1.137   2.137  0.000
+ATOM     31 O1   OBU     4       8.698   6.398   1.113 -0.560
+ATOM     32 C2   OBU     4       7.403   6.419   1.667  0.200
+ATOM     33 H6   OBU     4       7.434   6.720   2.713 -0.020
+ATOM     34 H7   OBU     4       6.958   5.427   1.583 -0.020
+ATOM     35 C3   OBU     4       6.537   7.424   0.891  0.060
+ATOM     36 H8   OBU     4       6.616   7.211  -0.176  0.000
+ATOM     37 H9   OBU     4       6.907   8.435   1.059  0.000
+ATOM     38 C4   OBU     4       5.048   7.358   1.272  0.020
+ATOM     39 H10  OBU     4       4.670   6.357   1.078  0.000
+ATOM     40 H11  OBU     4       4.495   8.058   0.644  0.000
+ATOM     41 C5   OBU     4       4.781   7.732   2.734  0.020
+ATOM     42 H12  OBU     4       5.233   7.001   3.404  0.000
+ATOM     43 H13  OBU     4       3.704   7.744   2.907  0.000
+ATOM     44 H14  OBU     4       5.182   8.721   2.945  0.000
+END
+CONNECT   1 P       2    3   17   31
+CONNECT   2 O2      1
+CONNECT   3 OS      4    1
+CONNECT   4 CT      3    5    6    7
+CONNECT   5 HC      4
+CONNECT   6 HC      4
+CONNECT   7 CT      4    8    9   10
+CONNECT   8 HC      7
+CONNECT   9 HC      7
+CONNECT  10 CT      7   11   12   13
+CONNECT  11 HC     10
+CONNECT  12 HC     10
+CONNECT  13 CT     10   14   15   16
+CONNECT  14 HC     13
+CONNECT  15 HC     13
+CONNECT  16 HC     13
+CONNECT  17 OS     18    1
+CONNECT  18 CT     17   19   20   21
+CONNECT  19 HC     18
+CONNECT  20 HC     18
+CONNECT  21 CT     18   22   23   24
+CONNECT  22 HC     21
+CONNECT  23 HC     21
+CONNECT  24 CT     21   25   26   27
+CONNECT  25 HC     24
+CONNECT  26 HC     24
+CONNECT  27 CT     24   28   29   30
+CONNECT  28 HC     27
+CONNECT  29 HC     27
+CONNECT  30 HC     27
+CONNECT  31 OS     32    1
+CONNECT  32 CT     31   33   34   35
+CONNECT  33 HC     32
+CONNECT  34 HC     32
+CONNECT  35 CT     32   36   37   38
+CONNECT  36 HC     35
+CONNECT  37 HC     35
+CONNECT  38 CT     35   39   40   41
+CONNECT  39 HC     38
+CONNECT  40 HC     38
+CONNECT  41 CT     38   42   43   44
+CONNECT  42 HC     41
+CONNECT  43 HC     41
+CONNECT  44 HC     41
+END

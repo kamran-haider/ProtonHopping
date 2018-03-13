@@ -1,0 +1,5 @@
+source leaprc.water.tip3p
+loadoff H3O.bin
+mol = loadpdb oxygen.pdb
+savepdb mol test.pdb
+quit

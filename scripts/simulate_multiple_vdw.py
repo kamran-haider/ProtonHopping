@@ -70,7 +70,7 @@ def main():
     src_energies = os.path.join(input_dir, "energies.opp")
     src_ms_gold = os.path.join(input_dir, "ms_gold")
 
-    scalings = [1.0]
+    #scalings = scalings[:5]
     n_runs = len(scalings)
     # run n different MC simulations, each on a different protein conf and coresponding water orientations
     for n in range(n_runs):
@@ -87,19 +87,19 @@ def main():
         copy2(src_step2out, run_dir)
         copy2(src_head3lst, run_dir)
         copy2(src_energies, run_dir)
+        copy2(src_ms_gold, run_dir)
 
-
-        """
-        for n in range(n_runs):
-            with open("extra.tpl", "w") as f1:
-                f1.write("SCALING  VDW0        1.00\n")
-                f1.write("SCALING  VDW1        1.00\n")
-                f1.write("SCALING  VDW         %s\n" % str(scalings[n]))
-                f1.write("SCALING  TORS       1.0\n")
+        with open("extra.tpl", "w") as f1:
+            f1.write("SCALING  VDW0        1.00\n")
+            f1.write("SCALING  VDW1        1.00\n")
+            f1.write("SCALING  VDW         %s\n" % str(scalings[n]))
+            f1.write("SCALING  TORS       1.0\n")
         # set up MCCE run
+        extra = os.path.join(run_dir, "extra.tpl")
+
         m = MCCEParams(mcce_exec_dir)
         m.edit_parameters(INPDB="step2_out.pdb",
-                          DO_PREMCCE="f", DO_ROTAMERS="f", DO_ENERGY="t",
+                          DO_PREMCCE="f", DO_ROTAMERS="f", DO_ENERGY="f", EXTRA=extra,
                           DO_MONTE="t", MONTE_ADV_OPT="f", MONTE_MS="t",
                           MONTE_REDUCE="0.0001", BIG_PAIRWISE="1.0", MONTE_RUNS="20")
         m.write_runprm(run_dir + "/")
@@ -107,8 +107,6 @@ def main():
         m.write_submitsh("", run_name=str(n))
         call("qsub submit.sh", shell=True)
         time.sleep(10)
-        
-        """
         os.chdir(curr_dir)
 
 
